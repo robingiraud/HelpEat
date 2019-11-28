@@ -41,18 +41,22 @@
 
 <style lang='scss' scoped>
   .HomePage {
-    h1 {
-      margin:0;
-      height: 300px;
-      padding-left: 30%;
-      padding-right: 30%;
-      display: flex;
-      align-items: center;
-      background-color: #A64444;;
-      text-align: center;
-      color: white;
-      font-size: 64px;
-      font-weight: normal;
+    .titleWrapper {
+      max-height: 46vh;
+      background-color: #A64444;
+      padding: 50px;
+
+      h1 {
+        margin:0;
+        padding-left: 20%;
+        padding-right: 20%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-size: 35px;
+        font-weight: normal;
+      }
     }
   }
 </style>
