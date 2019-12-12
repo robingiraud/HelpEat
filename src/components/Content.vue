@@ -20,10 +20,10 @@
       <button @click="toggleContent">Revenir</button>
       <button @click="toggleResult">Resultat</button>
     </div>
-    <div v-if="displayResult" class="resultPage flex-fluid">
-      <div v-for="day in day" v-bind:key="day">
-          <h1>{{day}}</h1>
-        <div v-for="(i, index) in arr[day]" v-bind:key="i.day" :class= meal[index]>
+    <div v-if="displayResult" class="resultPage flex-fluid flex-column">
+      <div v-for="day in day" v-bind:key="day" class="day flex-fluid">
+          <h1 class="item-1">{{day}}</h1>
+        <div v-for="(i, index) in arr[day]" v-bind:key="i.day" class="item-1">
           <h4>{{meal[index]}}</h4>
           <div v-for="t in i" v-bind:key="t.j">
             <p>{{t.name}}</p>
@@ -85,5 +85,14 @@
         font-weight: normal;
       }
     }
+  }
+
+  .day {
+    width: 100%;
+  }
+
+  .item-1 {
+    flex-basis: calc(((0.2%)*100) - 32px);
+    height: auto;
   }
 </style>
