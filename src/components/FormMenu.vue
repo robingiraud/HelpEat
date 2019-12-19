@@ -1,30 +1,12 @@
 <template>
     <main>
-        <!-- Page d'accueil -->
-        <div v-if="!displayContent" class="homePage">
-            <section class="titleWrapper">
-                <h1>Préparez de meilleurs repas pour vos enfants avec HelpEat!</h1>
-            </section>
-            <section>
-                <p>ImagePlateau</p>
-            </section>
-            <section>
-                <p>ImageEnfant</p>
-                <button v-on:click="toggleContent">C'est parti!</button>
-            </section>
-            <section>
-                <p>ImageSalade</p>
-            </section>
-        </div>
-
-        <!-- Formulaire -->
-        <div v-if="displayContent && !displayResult" class="contentPage">
+        <div class="contentPage">
             <div class="titleContainer">
                 <p>Veuillez saisir le contenu des repas de la semaine, je me charge du reste...</p>
             </div>
             <hr width="80%">
             <div class="submitContainer">
-                <button @click="toggleResult">Valider</button>
+                <button @click="displayResult">Valider</button>
             </div>
             <section class="tableMenus">
                 <div class="accordion" @click="toggleAccordeon('monday')"
@@ -1021,21 +1003,14 @@
                 </article>
             </section>
         </div>
-        <div v-if="displayResult" class="resultPage flex-fluid flex-column">
-            <ResultBoard></ResultBoard>
-        </div>
     </main>
 </template>
 
 <script>
-    import ResultBoard from "./ResultBoard";
-
     export default {
         name: "Content",
         data() {
             return {
-                displayContent: false,
-                displayResult: false,
                 accordeons: {
                     'monday': false,
                     'tuesday': false,
@@ -1057,16 +1032,7 @@
                 }
             }
         },
-        components: {
-            ResultBoard
-        },
         methods: {
-            toggleContent() {
-                this.displayContent = !this.displayContent
-            },
-            toggleResult() {
-                this.displayResult = !this.displayResult
-            },
             toggleAccordeon(day) {
                 for (let element in this.accordeons) {
                     if (element === day) {
@@ -1090,29 +1056,15 @@
             },
             deleteData(day, meal, index) {
                 this.data[day][meal].splice(index, 1)
+            },
+            displayResult ()  {
+                this.$emit('clicked', 'displayResult')
             }
         }
     };
 </script>
 
 <style lang='scss' scoped>
-    .homePage {
-        .titleWrapper {
-            max-height: 46vh;
-            padding: 50px;
-
-            h1 {
-                margin: 0;
-                padding-left: 20%;
-                padding-right: 20%;
-                display: flex;
-                align-items: center;
-                text-align: center;
-                font-size: 35px;
-                font-weight: normal;
-            }
-        }
-    }
 
     .contentPage {
         color: gray;
