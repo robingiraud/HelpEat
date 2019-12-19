@@ -8,7 +8,6 @@
 <script>
     import Menu from "./components/Menu";
     import Content from "./components/Content";
-
     export default {
         name: "App",
         components: {
