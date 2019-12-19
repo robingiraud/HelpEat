@@ -21,20 +21,13 @@
       <button @click="toggleResult">Resultat</button>
     </div>
     <div v-if="displayResult" class="resultPage flex-fluid flex-column">
-      <div v-for="day in day" v-bind:key="day" class="day flex-fluid">
-          <h1 class="item-1">{{day}}</h1>
-        <div v-for="(i, index) in arr[day]" v-bind:key="i.day" class="item-1">
-          <h4>{{meal[index]}}</h4>
-          <div v-for="t in i" v-bind:key="t.j">
-            <p>{{t.name}}</p>
-          </div>
-        </div>
-      </div>
+      <ResultBoard></ResultBoard>
     </div>
   </main>
 </template>
 
 <script>
+  import ResultBoard from  './ResultBoard'
     export default {
         name: "Content",
         data () {
@@ -47,15 +40,14 @@
 
             }
         },
+
+        components: {
+          ResultBoard
+        },
+
         methods: {
 
-            getData() {
-              this.arr = testSemaine.weekMap
-            },
-
             toggleContent() {
-                console.log('test',testSemaine.weekMap)
-                this.getData()
                 this.displayContent = !this.displayContent
             },
 
@@ -85,14 +77,5 @@
         font-weight: normal;
       }
     }
-  }
-
-  .day {
-    width: 100%;
-  }
-
-  .item-1 {
-    flex-basis: calc(((0.2%)*100) - 32px);
-    height: auto;
   }
 </style>

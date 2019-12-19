@@ -36,7 +36,7 @@
   header {
     margin: 0;
     padding: 0;
-    font-family: "Avenir";
+    font-family: inherit;
     width: 100%;
     height: 100px;
     align-items: center;
