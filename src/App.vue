@@ -12,7 +12,8 @@
         </nav>
       </div>
       <div class="iconContainer">
-        <i class="fas fa-cog" name="Paramètres"></i><span> Paramètres</span>
+        <div><i class="fas fa-cog" name="Paramètres"></i><span> Paramètres</span></div>
+        <div><i class="fas fa-user"></i><span> Login</span></div>
       </div>
     </header>
     <!-- Content -->
@@ -64,7 +65,7 @@
       color: white;
       .menuContainer {
         display: flex;
-        flex-basis: 75%;
+        flex-basis: 80%;
         img {
           margin-left: 2%;
           margin-right: 2%;
@@ -90,9 +91,11 @@
         }
       }
       .iconContainer {
-        flex-basis: 25%;
+        flex-basis: 20%;
+        display: flex;
+        justify-content: space-around;
         text-align: center;
-        &:hover {
+        div:hover {
           cursor: pointer;
         }
       }

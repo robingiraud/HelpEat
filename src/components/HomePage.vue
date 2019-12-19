@@ -3,16 +3,18 @@
         <section class="titleWrapper">
             <h1>Préparez de meilleurs repas pour vos enfants avec HelpEat!</h1>
         </section>
-        <section>
-            <p>ImagePlateau</p>
-        </section>
-        <section>
-            <p>ImageEnfant</p>
-            <button @click="displayForm">C'est parti!</button>
-        </section>
-        <section>
-            <p>ImageSalade</p>
-        </section>
+        <div class="imgContainer">
+            <section>
+                <img src="/src/assets/plateau.svg" alt="boxImage">
+            </section>
+            <section>
+                <img src="/src/assets/enfant.svg" alt="childImage">
+                <button @click="displayForm">C'est parti!</button>
+            </section>
+            <section>
+                <img src="/src/assets/laitue.svg" alt="saladImage">
+            </section>
+        </div>
     </div>
 </template>
 
@@ -29,6 +31,10 @@
 
 <style lang="scss" scoped>
     .homePage {
+        height: calc(100vh - 100px);
+        display: flex;
+        flex-direction: column;
+
         .titleWrapper {
             max-height: 46vh;
             padding: 50px;
@@ -42,6 +48,35 @@
                 text-align: center;
                 font-size: 35px;
                 font-weight: normal;
+            }
+        }
+        .imgContainer {
+            display: flex;
+            flex-grow: 1;
+            justify-content: space-between;
+            section {
+                display: flex;
+                &:first-child {
+                    width: 33.33%;
+                }
+                &:nth-child(0n+2) {
+                    flex-direction: column;
+                    button {
+                        background-color: #C83E3E;
+                        color: white;
+                        padding: 10px;
+                        font-size: 18px;
+                        border-radius: 10px;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &:last-child {
+                    align-items: flex-end;
+                    justify-content: flex-end;
+                    width: 33.33%;
+                }
             }
         }
     }
