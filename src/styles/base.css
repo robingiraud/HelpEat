@@ -1,6 +1,10 @@
+@font-face {
+  font-family: "avenir book";
+  src: url("./fonts/AvenirLTStd-Book.otf");
+}
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  font-family: "Avenir";
+  font-family: "avenir book";
 }

@@ -4,14 +4,13 @@
       <img  src='../assets/logo_white.png'>
       <nav>
         <ul>
-          <li @click="toto">Recommandations OMS</li>
-          <li>Mes menus</li>
-          <li>A propos</li>
+          <li @click="toto"><i class="fas fa-check-circle"></i> Recommandations OMS</li>
+          <li><i class="fas fa-utensils"></i> Mes menus</li>
         </ul>
       </nav>
     </div>
     <div class="iconContainer">
-      <i class="fas fa-cog" name="Paramètres"></a></i>
+      <i class="fas fa-cog" name="Paramètres"></i><span> Paramètres</span>
     </div>
   </header>
 </template>
@@ -74,7 +73,7 @@
     .iconContainer {
       flex-basis: 25%;
       text-align: center;
-      i:hover {
+      &:hover {
         cursor: pointer;
       }
     }

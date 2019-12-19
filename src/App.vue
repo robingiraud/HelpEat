@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <Menu />
-    <Content></Content>
+    <FormMenu />
   </div>
 </template>
 
 <script>
     import Menu from "./components/Menu";
-    import Content from "./components/Content";
+    import FormMenu from "./components/FormMenu";
     export default {
         name: "App",
         components: {
-            Content,
+            FormMenu,
             Menu
         }
     };
