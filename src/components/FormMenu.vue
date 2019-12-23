@@ -1141,7 +1141,9 @@
 
                 &.isOpen {
                     background-color: #C83E3E;
-
+                    border-bottom: 1px solid #C83E3E;
+                    border-left: 1px solid #C83E3E;
+                    border-right: 1px solid #C83E3E;
                     h2 {
                         color: white;
                     }

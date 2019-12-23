@@ -58,6 +58,7 @@
                 display: flex;
                 &:first-child {
                     width: 33.33%;
+                    align-items: flex-end;
                 }
                 &:nth-child(0n+2) {
                     flex-direction: column;
