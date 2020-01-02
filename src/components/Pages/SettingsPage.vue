@@ -25,7 +25,8 @@
                 </div>
             </div>
         </form>
-        <button @click="save">Sauvegarder</button>
+        <!-- <button @click="save">Sauvegarder</button> -->
+        <button>Sauvegarder</button>
     </div>
 </template>
 

@@ -1066,8 +1066,7 @@
     };
 </script>
 
-<style lang='scss' scoped>
-
+<style lang='scss'>
     .contentPage {
         color: gray;
 
@@ -1160,6 +1159,7 @@
             .menu {
                 width: 80%;
                 display: flex;
+                flex-direction: row;
                 height: 0;
                 overflow: hidden;
                 border-left: 1px solid #E1E1E1;
@@ -1253,6 +1253,22 @@
                     transition: 1s;
                     transform: rotateZ(180deg);
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .accordion {
+            width: 100% !important;
+        }
+        .menu {
+            width: 100% !important;
+            flex-direction: column !important;
+            &.isOpen {
+                height: 60vh !important;
+            }
+            section {
+                width: 100% !important;
             }
         }
     }

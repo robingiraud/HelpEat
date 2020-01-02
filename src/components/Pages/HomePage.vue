@@ -81,4 +81,30 @@
             }
         }
     }
+
+    @media screen and (max-width: 950px) {
+        .homePage {
+            .titleWrapper {
+                padding: 5vh 0 0 0 !important;
+                h1 {
+                    padding-left: 10% !important;
+                    padding-right: 10% !important;
+                }
+            }
+        }
+        .imgContainer {
+            section {
+                &:first-child {
+                    display: none;
+                }
+                &:nth-child(0n+2) {
+                    width: 100%;
+                    padding: 5vh 20vw;
+                }
+                &:last-child {
+                    display: none;
+                }
+            }
+        }
+    }
 </style>
