@@ -13,6 +13,9 @@
                 </div>
             </div>
         </section>
+        <div class="saveButton">
+            <i class="fa fa-save"/>
+        </div>
     </div>
 </template>
 
@@ -27,14 +30,13 @@
 
             }
         },
-        created: function () {
-            this.getData()
-        },
         methods: {
-
             getData() {
                 this.arr = testSemaine.weekMap
             }
+        },
+        mounted () {
+            this.getData()
         }
     }
 </script>
@@ -73,5 +75,24 @@
 
     .produit {
         padding: 0 15px;
+    }
+    .saveButton {
+        width: 80px;
+        height: 80px;
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #C83E3E;
+        border-radius: 50px;
+        color: white;
+        font-size: 32px;-webkit-box-shadow: 2px 6px 22px -1px rgba(87,87,87,1);
+        -moz-box-shadow: 2px 6px 22px -1px rgba(87,87,87,1);
+        box-shadow: 2px 6px 22px -1px rgba(87,87,87,1);
+        &:hover {
+            cursor: pointer;
+        }
     }
 </style>

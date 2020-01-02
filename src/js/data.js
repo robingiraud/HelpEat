@@ -21,8 +21,8 @@ let recommendations = [
   {
     id: 1,
     name: 'Fruits et légumes',
-    min: 5,
-    period: 'day',
+    min: 35,
+    period: 'week',
     cumulative: true
   },
   {
@@ -42,15 +42,15 @@ let recommendations = [
   {
     id: 4,
     name: 'Viande blanche',
-    max: 1,
-    period: 'day',
+    max: 7,
+    period: 'week',
     cumulative: false
   },
   {
     id: 5,
     name: 'Féculents et produits céréaliers',
-    max: 2,
-    period: 'day',
+    max: 14,
+    period: 'week',
     cumulative: true
   },
   {
@@ -70,15 +70,15 @@ let recommendations = [
   {
     id: 8,
     name: 'Œuf',
-    max: 1,
-    period: 'day',
+    max: 7,
+    period: 'week',
     cumulative: false
   },
   {
     id: 9,
     name: 'Produits laitiers',
-    max: 3,
-    period: 'day',
+    max: 21,
+    period: 'week',
     cumulative: true
   },
   {

@@ -14,7 +14,7 @@
       <div class="menuContainer menuContainerRight">
         <nav>
           <ul>
-            <li><i class="fas fa-cog" name="Paramètres"></i> Paramètres</li>
+            <li @click="display='displaySettings'"><i class="fas fa-cog" name="Paramètres"></i> Paramètres</li>
             <li><i class="fas fa-user"></i> Login</li>
           </ul>
         </nav>
@@ -23,24 +23,28 @@
     <!-- Content -->
     <HomePage v-if="display === 'displayHomePage'" @clicked="toggleDisplay" />
     <FormMenu v-if="display === 'displayForm'"  @clicked="toggleDisplay" />
-    <ResultBoard v-if="display == 'displayResult'" />
+    <SettingsPage v-if="display === 'displaySettings'" @clicked="toggleDisplay" />
+    <ResultBoard v-if="display == 'displayResult'" @clicked="toggleDisplay" />
   </div>
 </template>
 
 <script>
-    import HomePage from "./components/HomePage";
-    import FormMenu from "./components/FormMenu";
-    import ResultBoard from "./components/ResultBoard";
+    import HomePage from "./components/Pages/HomePage";
+    import FormMenu from "./components/Pages/FormMenu";
+    import ResultBoard from "./components/Pages/ResultBoard";
+    import SettingsPage from "./components/Pages/SettingsPage";
     export default {
         name: "App",
         components: {
-            HomePage,
-            FormMenu,
-            ResultBoard
+          SettingsPage,
+          HomePage,
+          FormMenu,
+          ResultBoard,
         },
         data() {
           return {
-            display: 'displayHomePage'
+            display: 'displayHomePage',
+            show: true
           }
         },
         methods: {

@@ -2,7 +2,7 @@
     <main>
         <div class="contentPage">
             <div class="titleContainer">
-                <p>Veuillez saisir le contenu des repas de la semaine, je me charge du reste...</p>
+                <p>Saisissez le contenu des repas de cette semaine, et je me charge du reste...</p>
             </div>
             <hr width="80%">
             <div class="submitContainer">
@@ -1058,7 +1058,9 @@
                 this.data[day][meal].splice(index, 1)
             },
             displayResult ()  {
-                this.$emit('clicked', 'displayResult')
+                this.$emit('clicked', 'displayResult');
+                console.log('--DATA--');
+                console.log(this.data)
             }
         }
     };
@@ -1183,6 +1185,15 @@
                         select {
                             width: 100%;
                             background-color: white;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                            &:focus {
+                                outline: none;
+                            }
+                            border: none;
+                            height: 30px;
+                            box-shadow: 0px 3px 5px rgba(0,0,0,.1);
                         }
                     }
 
