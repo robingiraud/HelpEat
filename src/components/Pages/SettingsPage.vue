@@ -1,5 +1,16 @@
 <template>
     <div>
+        <h2>Pattern journalier</h2>
+        <form>
+            <div v-for="el in pattern">
+                <div class="formElement">
+                    <label>{{el.name}}</label>
+                    <div><input type="number" :value="el.portions"></div>
+                    <i class="fas fa-times" @click="deleteCategory(el.id)"></i>
+                </div>
+            </div>
+        </form>
+        <h2>Catégories</h2>
         <form>
             <div v-for="el in reco" :key="el.id">
                 <div class="formElement">
@@ -22,11 +33,13 @@
                             </select>
                         </div>
                     </div>
+                    <i class="fas fa-times" @click="deleteCategory(el.id)"></i>
                 </div>
             </div>
         </form>
         <!-- <button @click="save">Sauvegarder</button> -->
-        <button>Sauvegarder</button>
+        <button>Nouvelle catégorie <i class="fas fa-plus-circle"></i></button>
+        <button>Sauvegarder <i class="fas fa-check-circle"></i></button>
     </div>
 </template>
 
@@ -36,6 +49,7 @@
         data() {
             return {
                 reco: '',
+                pattern: '',
                 test: {id:1, name:'toto'}
             }
         },
@@ -48,6 +62,9 @@
                 console.log(this.reco);
                 localStorage.setItem('reco', this.test)
             },
+            deleteCategory(id) {
+
+            },
             getData () {
                 if(localStorage.getItem('reco') !== null) {
                     console.log('ls reco trouvé');
@@ -56,6 +73,7 @@
                 } else {
                     console.log('ls reco introuvable, on prend les recos par defaut');
                     this.reco = recommendations
+                    this.pattern = mealsPattern
                 }
             }
         },
@@ -94,6 +112,13 @@
                         border: none;
                         box-shadow: 0px 3px 5px rgba(0,0,0,.1);
                     }
+                }
+            }
+            .fa-times {
+                color: #C83E3E;
+                margin: 3px 0 0 10px;
+                &:hover {
+                    cursor: pointer;
                 }
             }
         }

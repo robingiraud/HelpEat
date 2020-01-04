@@ -1,20 +1,24 @@
 <template>
     <div flex-fluid flex-column>
+        <div class="titleContainer">
+            <p><i class="far fa-check-square" style="color:green"></i> Notre chef vous propose...</p>
+        </div>
+        <hr width="80%">
         <section class='container'>
             <div v-for="day in days" v-bind:key="day" class="day flex-fluid">
                 <h1 class="item-1">{{day}}</h1>
-                <div v-for="(i, index) in arr[day]" v-bind:key="i.day" class="item-1">
+                <div v-for="(i, index) in results[day]" v-bind:key="i.day" class="item-1">
                     <h4>{{meal[index]}}</h4>
                     <section class='produit'>
                         <div v-for="t in i" v-bind:key="t.j">
-                            <p>{{t.name}}</p>
+                            <p>{{t.name}} x{{t.portions}}</p>
                         </div>
                     </section>
                 </div>
             </div>
         </section>
         <div class="saveButton">
-            <i class="fa fa-save"/>
+            <i class="fa fa-save" />
         </div>
     </div>
 </template>
@@ -22,17 +26,21 @@
 <script>
     export default {
         name: 'ResultBoard',
+        props: [
+            'dataMenu'
+        ],
         data() {
             return {
-                meal: ["Petit Déjeuner", "Déjeuner", "Gouter", "Dîner"],
-                days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
-                arr: []
-
+                meal: ['Petit Déjeuner', 'Déjeuner', 'Gouter', 'Dîner'],
+                days: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+                results: {}
             }
         },
         methods: {
             getData() {
-                this.arr = testSemaine.weekMap
+                let happyMeals = new HappyMeals(recommendations, mealsPattern, this.dataMenu);
+                happyMeals.provideMeals();
+                this.results = happyMeals.weekMap;
             }
         },
         mounted () {
@@ -42,6 +50,22 @@
 </script>
 
 <style lang='scss' scoped>
+
+    .titleContainer {
+        display: flex;
+        justify-content: center;
+
+        p {
+            width: 80%;
+            margin-bottom: 0;
+            font-size: 18px;
+        }
+    }
+
+    hr {
+        margin-top: .5rem;
+        margin-bottom: 1.3rem;
+    }
 
     .container {
         width: 100%;

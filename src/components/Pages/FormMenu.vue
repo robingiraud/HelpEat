@@ -9,41 +9,31 @@
                 <button @click="displayResult">Valider</button>
             </div>
             <section class="tableMenus">
-                <div class="accordion" @click="toggleAccordeon('monday')"
-                     v-bind:class="{isOpen: accordeons['monday'] === true}">
+                <div class="accordion" @click="toggleAccordeon('Lundi')"
+                     v-bind:class="{isOpen: accordeons['Lundi'] === true}">
                     <h2>Lundi</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <article class="menu"
-                         v-bind:class="{ closed: accordeons['monday'] === false, isOpen: accordeons['monday'] === true }">
+                         v-bind:class="{ closed: accordeons['Lundi'] === false, isOpen: accordeons['Lundi'] === true }">
                     <section>
                         <h3>Petit-Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('monday', 0, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Lundi', 0, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['monday'][0]" :key="index">
+                                <div v-for="(element,index) in data['Lundi'][0]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['monday'][0][index].portions">
+                                        <input type="number" min="0" v-model="data['Lundi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('monday', 0, index)"></i>
+                                           @click="deleteData('Lundi', 0, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -52,31 +42,21 @@
                     <section>
                         <h3>Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('monday', 1, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Lundi', 1, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['monday'][1]" :key="index">
+                                <div v-for="(element,index) in data['Lundi'][1]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['monday'][1][index].portions">
+                                        <input type="number" min="0" v-model="data['Lundi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('monday', 1, index)"></i>
+                                           @click="deleteData('Lundi', 1, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -85,31 +65,21 @@
                     <section>
                         <h3>Goûter</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('monday', 2, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Lundi', 2, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['monday'][2]" :key="index">
+                                <div v-for="(element,index) in data['Lundi'][2]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['monday'][2][index].portions">
+                                        <input type="number" min="0" v-model="data['Lundi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('monday', 2, index)"></i>
+                                           @click="deleteData('Lundi', 2, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -118,72 +88,52 @@
                     <section>
                         <h3>Dîner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('monday', 3, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Lundi', 3, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['monday'][3]" :key="index">
+                                <div v-for="(element,index) in data['Lundi'][3]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['monday'][3][index].portions">
+                                        <input type="number" min="0" v-model="data['Lundi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('monday', 3, index)"></i>
+                                           @click="deleteData('Lundi', 3, index)"></i>
                                     </li>
                                 </div>
                             </ul>
                         </div>
                     </section>
                 </article>
-                <div class="accordion" @click="toggleAccordeon('tuesday')"
-                     v-bind:class="{isOpen: accordeons['tuesday'] === true}">
+                <div class="accordion" @click="toggleAccordeon('Mardi')"
+                     v-bind:class="{isOpen: accordeons['Mardi'] === true}">
                     <h2>Mardi</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <article class="menu"
-                         v-bind:class="{ closed: accordeons['tuesday'] === false, isOpen: accordeons['tuesday'] === true }">
+                         v-bind:class="{ closed: accordeons['Mardi'] === false, isOpen: accordeons['Mardi'] === true }">
                     <section>
                         <h3>Petit-Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('tuesday', 0, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mardi', 0, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['tuesday'][0]" :key="index">
+                                <div v-for="(element,index) in data['Mardi'][0]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['tuesday'][0][index].portions">
+                                        <input type="number" min="0" v-model="data['Mardi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('tuesday', 0, index)"></i>
+                                           @click="deleteData('Mardi', 0, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -192,31 +142,21 @@
                     <section>
                         <h3>Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('tuesday', 1, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mardi', 1, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['tuesday'][1]" :key="index">
+                                <div v-for="(element,index) in data['Mardi'][1]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['tuesday'][1][index].portions">
+                                        <input type="number" min="0" v-model="data['Mardi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('tuesday', 1, index)"></i>
+                                           @click="deleteData('Mardi', 1, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -225,31 +165,21 @@
                     <section>
                         <h3>Goûter</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('tuesday', 2, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mardi', 2, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['tuesday'][2]" :key="index">
+                                <div v-for="(element,index) in data['Mardi'][2]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['tuesday'][2][index].portions">
+                                        <input type="number" min="0" v-model="data['Mardi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('tuesday', 2, index)"></i>
+                                           @click="deleteData('Mardi', 2, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -258,73 +188,52 @@
                     <section>
                         <h3>Dîner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('tuesday', 3, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mardi', 3, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['tuesday'][3]" :key="index">
+                                <div v-for="(element,index) in data['Mardi'][3]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['tuesday'][3][index].portions">
+                                        <input type="number" min="0" v-model="data['Mardi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('tuesday', 3, index)"></i>
+                                           @click="deleteData('Mardi', 3, index)"></i>
                                     </li>
                                 </div>
                             </ul>
                         </div>
                     </section>
                 </article>
-                <div class="accordion" @click="toggleAccordeon('wednesday')"
-                     v-bind:class="{isOpen: accordeons['wednesday'] === true}">
+                <div class="accordion" @click="toggleAccordeon('Mercredi')"
+                     v-bind:class="{isOpen: accordeons['Mercredi'] === true}">
                     <h2>Mercredi</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <article class="menu"
-                         v-bind:class="{ closed: accordeons['wednesday'] === false, isOpen: accordeons['wednesday'] === true }">
+                         v-bind:class="{ closed: accordeons['Mercredi'] === false, isOpen: accordeons['Mercredi'] === true }">
                     <section>
                         <h3>Petit-Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal"
-                                    @change="appendData('wednesday', 0, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mercredi', 0, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['wednesday'][0]" :key="index">
+                                <div v-for="(element,index) in data['Mercredi'][0]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['wednesday'][0][index].portions">
+                                        <input type="number" min="0" v-model="data['Mercredi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('wednesday', 0, index)"></i>
+                                           @click="deleteData('Mercredi', 0, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -333,32 +242,21 @@
                     <section>
                         <h3>Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal"
-                                    @change="appendData('wednesday', 1, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mercredi', 1, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['wednesday'][1]" :key="index">
+                                <div v-for="(element,index) in data['Mercredi'][1]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['wednesday'][1][index].portions">
+                                        <input type="number" min="0" v-model="data['Mercredi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('wednesday', 1, index)"></i>
+                                           @click="deleteData('Mercredi', 1, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -367,32 +265,21 @@
                     <section>
                         <h3>Goûter</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal"
-                                    @change="appendData('wednesday', 2, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mercredi', 2, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['wednesday'][2]" :key="index">
+                                <div v-for="(element,index) in data['Mercredi'][2]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['wednesday'][2][index].portions">
+                                        <input type="number" min="0" v-model="data['Mercredi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('wednesday', 2, index)"></i>
+                                           @click="deleteData('Mercredi', 2, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -401,74 +288,52 @@
                     <section>
                         <h3>Dîner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal"
-                                    @change="appendData('wednesday', 3, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Mercredi', 3, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['wednesday'][3]" :key="index">
+                                <div v-for="(element,index) in data['Mercredi'][3]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['wednesday'][3][index].portions">
+                                        <input type="number" min="0" v-model="data['Mercredi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('wednesday', 3, index)"></i>
+                                           @click="deleteData('Mercredi', 3, index)"></i>
                                     </li>
                                 </div>
                             </ul>
                         </div>
                     </section>
                 </article>
-                <div class="accordion" @click="toggleAccordeon('thursday')"
-                     v-bind:class="{isOpen: accordeons['thursday'] === true}">
+                <div class="accordion" @click="toggleAccordeon('Jeudi')"
+                     v-bind:class="{isOpen: accordeons['Jeudi'] === true}">
                     <h2>Jeudi</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <article class="menu"
-                         v-bind:class="{ closed: accordeons['thursday'] === false, isOpen: accordeons['thursday'] === true }">
+                         v-bind:class="{ closed: accordeons['Jeudi'] === false, isOpen: accordeons['Jeudi'] === true }">
                     <section>
                         <h3>Petit-Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal"
-                                    @change="appendData('thursday', 0, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Jeudi', 0, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['thursday'][0]" :key="index">
+                                <div v-for="(element,index) in data['Jeudi'][0]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['thursday'][0][index].portions">
+                                        <input type="number" min="0" v-model="data['Jeudi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('thursday', 0, index)"></i>
+                                           @click="deleteData('Jeudi', 0, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -478,31 +343,21 @@
                         <h3>Déjeuner</h3>
                         <div class="selectWrapper flex">
                             <select name="food" v-model="selectedMeal"
-                                    @change="appendData('thursday', 1, selectedMeal)">
+                                    @change="appendData('Jeudi', 1, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['thursday'][1]" :key="index">
+                                <div v-for="(element,index) in data['Jeudi'][1]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['thursday'][1][index].portions">
+                                        <input type="number" min="0" v-model="data['Jeudi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('thursday', 1, index)"></i>
+                                           @click="deleteData('Jeudi', 1, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -512,31 +367,21 @@
                         <h3>Goûter</h3>
                         <div class="selectWrapper flex">
                             <select name="food" v-model="selectedMeal"
-                                    @change="appendData('thursday', 2, selectedMeal)">
+                                    @change="appendData('Jeudi', 2, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['thursday'][2]" :key="index">
+                                <div v-for="(element,index) in data['Jeudi'][2]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['thursday'][2][index].portions">
+                                        <input type="number" min="0" v-model="data['Jeudi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('thursday', 2, index)"></i>
+                                           @click="deleteData('Jeudi', 2, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -546,72 +391,52 @@
                         <h3>Dîner</h3>
                         <div class="selectWrapper flex">
                             <select name="food" v-model="selectedMeal"
-                                    @change="appendData('thursday', 3, selectedMeal)">
+                                    @change="appendData('Jeudi', 3, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['thursday'][3]" :key="index">
+                                <div v-for="(element,index) in data['Jeudi'][3]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['thursday'][3][index].portions">
+                                        <input type="number" min="0" v-model="data['Jeudi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('thursday', 3, index)"></i>
+                                           @click="deleteData('Jeudi', 3, index)"></i>
                                     </li>
                                 </div>
                             </ul>
                         </div>
                     </section>
                 </article>
-                <div class="accordion" @click="toggleAccordeon('friday')"
-                     v-bind:class="{isOpen: accordeons['friday'] === true}">
+                <div class="accordion" @click="toggleAccordeon('Vendredi')"
+                     v-bind:class="{isOpen: accordeons['Vendredi'] === true}">
                     <h2>Vendredi</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <article class="menu"
-                         v-bind:class="{ closed: accordeons['friday'] === false, isOpen: accordeons['friday'] === true }">
+                         v-bind:class="{ closed: accordeons['Vendredi'] === false, isOpen: accordeons['Vendredi'] === true }">
                     <section>
                         <h3>Petit-Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('friday', 0, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Vendredi', 0, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['friday'][0]" :key="index">
+                                <div v-for="(element,index) in data['Vendredi'][0]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['friday'][0][index].portions">
+                                        <input type="number" min="0" v-model="data['Vendredi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('friday', 0, index)"></i>
+                                           @click="deleteData('Vendredi', 0, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -620,31 +445,21 @@
                     <section>
                         <h3>Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('friday', 1, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Vendredi', 1, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['friday'][1]" :key="index">
+                                <div v-for="(element,index) in data['Vendredi'][1]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['friday'][1][index].portions">
+                                        <input type="number" min="0" v-model="data['Vendredi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('friday', 1, index)"></i>
+                                           @click="deleteData('Vendredi', 1, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -653,31 +468,21 @@
                     <section>
                         <h3>Goûter</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('friday', 2, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Vendredi', 2, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['friday'][2]" :key="index">
+                                <div v-for="(element,index) in data['Vendredi'][2]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['friday'][2][index].portions">
+                                        <input type="number" min="0" v-model="data['Vendredi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('friday', 2, index)"></i>
+                                           @click="deleteData('Vendredi', 2, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -686,73 +491,53 @@
                     <section>
                         <h3>Dîner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('friday', 3, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Vendredi', 3, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['friday'][3]" :key="index">
+                                <div v-for="(element,index) in data['Vendredi'][3]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['friday'][3][index].portions">
+                                        <input type="number" min="0" v-model="data['Vendredi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('friday', 3, index)"></i>
+                                           @click="deleteData('Vendredi', 3, index)"></i>
                                     </li>
                                 </div>
                             </ul>
                         </div>
                     </section>
                 </article>
-                <div class="accordion" @click="toggleAccordeon('saturday')"
-                     v-bind:class="{isOpen: accordeons['saturday'] === true}">
+                <div class="accordion" @click="toggleAccordeon('Samedi')"
+                     v-bind:class="{isOpen: accordeons['Samedi'] === true}">
                     <h2>Samedi</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <article class="menu"
-                         v-bind:class="{ closed: accordeons['saturday'] === false, isOpen: accordeons['saturday'] === true }">
+                         v-bind:class="{ closed: accordeons['Samedi'] === false, isOpen: accordeons['Samedi'] === true }">
                     <section>
                         <h3>Petit-Déjeuner</h3>
                         <div class="selectWrapper flex">
                             <select name="food" v-model="selectedMeal"
-                                    @change="appendData('saturday', 0, selectedMeal)">
+                                    @change="appendData('Samedi', 0, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['saturday'][0]" :key="index">
+                                <div v-for="(element,index) in data['Samedi'][0]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['saturday'][0][index].portions">
+                                        <input type="number" min="0" v-model="data['Samedi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('saturday', 0, index)"></i>
+                                           @click="deleteData('Samedi', 0, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -762,31 +547,21 @@
                         <h3>Déjeuner</h3>
                         <div class="selectWrapper flex">
                             <select name="food" v-model="selectedMeal"
-                                    @change="appendData('saturday', 1, selectedMeal)">
+                                    @change="appendData('Samedi', 1, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['saturday'][1]" :key="index">
+                                <div v-for="(element,index) in data['Samedi'][1]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['saturday'][1][index].portions">
+                                        <input type="number" min="0" v-model="data['Samedi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('saturday', 1, index)"></i>
+                                           @click="deleteData('Samedi', 1, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -796,31 +571,21 @@
                         <h3>Goûter</h3>
                         <div class="selectWrapper flex">
                             <select name="food" v-model="selectedMeal"
-                                    @change="appendData('saturday', 2, selectedMeal)">
+                                    @change="appendData('Samedi', 2, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['saturday'][2]" :key="index">
+                                <div v-for="(element,index) in data['Samedi'][2]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['saturday'][2][index].portions">
+                                        <input type="number" min="0" v-model="data['Samedi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('saturday', 2, index)"></i>
+                                           @click="deleteData('Samedi', 2, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -830,72 +595,52 @@
                         <h3>Dîner</h3>
                         <div class="selectWrapper flex">
                             <select name="food" v-model="selectedMeal"
-                                    @change="appendData('saturday', 3, selectedMeal)">
+                                    @change="appendData('Samedi', 3, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['saturday'][3]" :key="index">
+                                <div v-for="(element,index) in data['Samedi'][3]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['saturday'][3][index].portions">
+                                        <input type="number" min="0" v-model="data['Samedi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('saturday', 3, index)"></i>
+                                           @click="deleteData('Samedi', 3, index)"></i>
                                     </li>
                                 </div>
                             </ul>
                         </div>
                     </section>
                 </article>
-                <div class="accordion" @click="toggleAccordeon('sunday')"
-                     v-bind:class="{isOpen: accordeons['sunday'] === true }">
+                <div class="accordion" @click="toggleAccordeon('Dimanche')"
+                     v-bind:class="{isOpen: accordeons['Dimanche'] === true }">
                     <h2>Dimanche</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <article class="menu"
-                         v-bind:class="{ closed: accordeons['sunday'] === false, isOpen: accordeons['sunday'] === true }">
+                         v-bind:class="{ closed: accordeons['Dimanche'] === false, isOpen: accordeons['Dimanche'] === true }">
                     <section>
                         <h3>Petit-Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('sunday', 0, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Dimanche', 0, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['sunday'][0]" :key="index">
+                                <div v-for="(element,index) in data['Dimanche'][0]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['sunday'][0][index].portions">
+                                        <input type="number" min="0" v-model="data['Dimanche'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('sunday', 0, index)"></i>
+                                           @click="deleteData('Dimanche', 0, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -904,31 +649,21 @@
                     <section>
                         <h3>Déjeuner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('sunday', 1, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Dimanche', 1, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['sunday'][1]" :key="index">
+                                <div v-for="(element,index) in data['Dimanche'][1]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['sunday'][1][index].portions">
+                                        <input type="number" min="0" v-model="data['Dimanche'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('sunday', 1, index)"></i>
+                                           @click="deleteData('Dimanche', 1, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -937,31 +672,21 @@
                     <section>
                         <h3>Goûter</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('sunday', 2, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Dimanche', 2, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['sunday'][2]" :key="index">
+                                <div v-for="(element,index) in data['Dimanche'][2]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['sunday'][2][index].portions">
+                                        <input type="number" min="0" v-model="data['Dimanche'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('sunday', 2, index)"></i>
+                                           @click="deleteData('Dimanche', 2, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -970,31 +695,21 @@
                     <section>
                         <h3>Dîner</h3>
                         <div class="selectWrapper flex">
-                            <select name="food" v-model="selectedMeal" @change="appendData('sunday', 3, selectedMeal)">
+                            <select name="food" v-model="selectedMeal" @change="appendData('Dimanche', 3, selectedMeal)">
                                 <option value="" selected>Categories</option>
-                                <option value="Fruits et légumes">Fruits et légumes</option>
-                                <option value="Viande Rouge">Viande rouge</option>
-                                <option value="Charcuterie">Charcuterie</option>
-                                <option value="Viande blanche">Viande blanche</option>
-                                <option value="Féculents et produits céréaliers">Féculents et produits céréaliers
-                                </option>
-                                <option value="Poisson gras">Poisson gras</option>
-                                <option value="Poisson maigre">Poisson maigre</option>
-                                <option value="Oeuf">Oeuf</option>
-                                <option value="Produit laitier">Produit laitier</option>
-                                <option value="Légumineuse">Légumineuse</option>
+                                <option v-for="categorie in reco" :value="categorie.id">{{categorie.name}}</option>
                             </select>
                         </div>
                         <div class="contentWrapper">
                             <ul>
-                                <div v-for="(element,index) in data['sunday'][3]" :key="index">
+                                <div v-for="(element,index) in data['Dimanche'][3]" :key="index">
                                     <li>
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" v-model="data['sunday'][3][index].portions">
+                                        <input type="number" min="0" v-model="data['Dimanche'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
-                                           @click="deleteData('sunday', 3, index)"></i>
+                                           @click="deleteData('Dimanche', 3, index)"></i>
                                     </li>
                                 </div>
                             </ul>
@@ -1012,23 +727,24 @@
         data() {
             return {
                 accordeons: {
-                    'monday': false,
-                    'tuesday': false,
-                    'wednesday': false,
-                    'thursday': false,
-                    'friday': false,
-                    'saturday': false,
-                    'sunday': false,
+                    'Lundi': false,
+                    'Mardi': false,
+                    'Mercredi': false,
+                    'Jeudi': false,
+                    'Vendredi': false,
+                    'Samedi': false,
+                    'Dimanche': false,
                 },
                 selectedMeal: '',
+                reco: recommendations,
                 data: {
-                    "monday": {0: [], 1: [], 2: [], 3: []},
-                    "tuesday": {0: [], 1: [], 2: [], 3: []},
-                    "wednesday": {0: [], 1: [], 2: [], 3: []},
-                    "thursday": {0: [], 1: [], 2: [], 3: []},
-                    "friday": {0: [], 1: [], 2: [], 3: []},
-                    "saturday": {0: [], 1: [], 2: [], 3: []},
-                    "sunday": {0: [], 1: [], 2: [], 3: []}
+                    'Lundi': {0: [], 1: [], 2: [], 3: []},
+                    'Mardi': {0: [], 1: [], 2: [], 3: []},
+                    'Mercredi': {0: [], 1: [], 2: [], 3: []},
+                    'Jeudi': {0: [], 1: [], 2: [], 3: []},
+                    'Vendredi': {0: [], 1: [], 2: [], 3: []},
+                    'Samedi': {0: [], 1: [], 2: [], 3: []},
+                    'Dimanche': {0: [], 1: [], 2: [], 3: []}
                 }
             }
         },
@@ -1043,14 +759,19 @@
                 }
             },
             appendData(day, meal, selectedMeal) {
+                //v2
                 let isAlreadySelected = false
                 this.data[day][meal].forEach((element) => {
-                    if (element.name === selectedMeal) {
+                    if (element.id === selectedMeal) {
                         isAlreadySelected = true
                     }
-                });
-                if (!isAlreadySelected) {
-                    this.data[day][meal].push({'name': selectedMeal, 'portions': 1})
+                })
+                if(!isAlreadySelected) {
+                    recommendations.forEach((category) => {
+                        if(category.id === selectedMeal) {
+                            this.data[day][meal].push({'id': selectedMeal, 'name': category.name, 'portions': 1})
+                        }
+                    })
                 }
                 this.selectedMeal = ''
             },
@@ -1059,8 +780,7 @@
             },
             displayResult ()  {
                 this.$emit('clicked', 'displayResult');
-                console.log('--DATA--');
-                console.log(this.data)
+                this.$emit('results', this.data);
             }
         }
     };

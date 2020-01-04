@@ -4,7 +4,7 @@ class HappyMeals {
 
   constructor(reco, pattern, uptake = []) {
     this.days = 7
-    this.nameDays = ['monday','tuesday','wednesday', 'thursday', 'friday', 'saturday', 'sunday' ]
+    this.nameDays = ['Lundi','Mardi','Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ]
     this.reco = reco
     this.pattern = pattern
     this.uptake = uptake
@@ -14,36 +14,41 @@ class HappyMeals {
   }
 
   /* provideMeals : Methode principale retournant toutes les proposition de menus de la semaine */
-
   provideMeals() {
     // on commence par boucler sur chaque jour de weekMap
     for(let nameDay in this.weekMap){
       // puis on boucle sur chaque menu
       for (var i = 0; i < this.pattern.length; i++) {
         // on verifie que le menu n'existe pas déjà
-        if(this.weekMap[nameDay][i] === undefined){
+        if(this.weekMap[nameDay][i] === undefined || this.weekMap[nameDay][i].length === 0){
           // Si le menu n'existe pas alors on le crée
-          this.createMeal(nameDay, this.pattern[i], i)
+          this.createMeal(nameDay, this.pattern[i], i, null, null)
         }else{
           // TODO : si le menu existe et qu'il est incomplet, on le complète
+          let portionsConsommees = 0
+          //On compte le nombre de portions deja présente dans le menu
+          this.weekMap[nameDay][i].forEach((meal) => {
+            portionsConsommees += parseInt(meal.portions)
+          })
+          // On complete le menu avec la fct createMeal modifiée
+          this.createMeal(nameDay, this.pattern[i], i, portionsConsommees, this.weekMap[nameDay][i])
         }
       }
     }
   }
 
-
   /* createMeal : créer un menu en vérifiant les reco */
-
-  createMeal(nameDay, mealPattern, mealIndex){
+  createMeal(nameDay, mealPattern, mealIndex, portionsConsommees, currentMeal){
     // on va chercher un aliment au hasard jusqu'à ce que le nombre de portion par menu soit atteint
     let portions = mealPattern.portions
-    let i = 0;
-    let newMeal = []
-    //console.log('newMeal', newMeal)
+
+    //Si portionRestantes est à null on doit créer le menu en entier, sinon on doit le compléter
+    let i = (portionsConsommees === null) ? 0 : portionsConsommees
+    let newMeal = (currentMeal == null) ? [] : currentMeal
+
     while (i < portions) {
       let newAliment = this.randomEntry(this.reco)
       // on vérifie si on peut ajouter cet aliment
-
       if(this.checkMax(newAliment, nameDay, newMeal) && this.checkCumul(newAliment, nameDay, newMeal) ){
         // on vérifie qu'on a pas déjà ajouté l'aliment, autrement on cumule la quantité
         let sameAlimKey = newMeal.findIndex(alim => alim.id == newAliment.id)
@@ -92,7 +97,7 @@ class HappyMeals {
 
   checkMax(newAliment, nameDay, currentMeal){
     let max = this.reco.find(alim => alim.id == newAliment.id).max
-    // si l'aliment n'a pas de propriété max, alors il est ilimité
+    // si l'aliment n'a pas de propriété max, alors il est illimité
     if(max === undefined){
       return true
     }
@@ -168,8 +173,6 @@ class HappyMeals {
   }
 
   /* weekMap, créé une "carte" de la semaine et y place les menus déjà consomés */
-
-
   weekMap() {
     let weekMap = {}
     for (let i = 0; i < 7; i++) {

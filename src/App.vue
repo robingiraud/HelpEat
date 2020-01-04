@@ -26,9 +26,9 @@
     </header>
     <!-- Content -->
     <HomePage v-if="display === 'displayHomePage'" @clicked="toggleDisplay" />
-    <FormMenu v-if="display === 'displayForm'"  @clicked="toggleDisplay" />
+    <FormMenu v-if="display === 'displayForm'"  @clicked="toggleDisplay" @results="getMenuData" />
     <SettingsPage v-if="display === 'displaySettings'" @clicked="toggleDisplay" />
-    <ResultBoard v-if="display == 'displayResult'" @clicked="toggleDisplay" />
+    <ResultBoard v-if="display == 'displayResult'" @clicked="toggleDisplay" :dataMenu="dataMenu" />
   </div>
 </template>
 
@@ -48,12 +48,16 @@
         data() {
           return {
             display: 'displayHomePage',
-            show: true
+            show: true,
+            dataMenu: {}
           }
         },
         methods: {
           toggleDisplay(value) {
             this.display = value
+          },
+          getMenuData(data) {
+            this.dataMenu = data
           }
         }
     };
