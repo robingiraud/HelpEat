@@ -18,7 +18,7 @@
             </div>
         </section>
         <div class="saveButton">
-            <i class="fa fa-save" />
+            <i class="fa fa-print" @click="save" />
         </div>
     </div>
 </template>
@@ -41,6 +41,9 @@
                 let happyMeals = new HappyMeals(recommendations, mealsPattern, this.dataMenu);
                 happyMeals.provideMeals();
                 this.results = happyMeals.weekMap;
+            },
+            save() {
+                window.print()
             }
         },
         mounted () {
@@ -57,7 +60,7 @@
 
         p {
             width: 80%;
-            margin-bottom: 0;
+            margin: 0;
             font-size: 18px;
         }
     }

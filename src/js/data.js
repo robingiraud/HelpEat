@@ -91,7 +91,7 @@ let recommendations = [
 ]
 
 let weekUptake = {
-  monday: {
+  'Lundi': {
     0: [
       {id: 1, name: 'Fruits et légumes',  portions: 1},
       {id: 9, name: 'Produits laitiers',  portions: 1},
@@ -107,7 +107,7 @@ let weekUptake = {
       {id: 5, name: 'Féculents et produits céréaliers',  portions: 3}
     ]
   },
-  tuesday: {
+  'Mardi': {
     0: [
       {id: 1, name: 'Fruits et légumes',  portions: 1},
       {id: 9, name: 'Produits laitiers',  portions: 1},
@@ -118,7 +118,7 @@ let weekUptake = {
       {id: 1, name: 'Fruits et légumes',  portions: 1}
     ]
   },
-  wednesday: {
+  'Mercredi': {
     0: [
       {id: 1, name: 'Fruits et légumes',  portions: 1},
       {id: 9, name: 'Produits laitiers',  portions: 1},
@@ -129,7 +129,7 @@ let weekUptake = {
       {id: 1, name: 'Fruits et légumes',  portions: 1}
     ]
   },
-  thursday: {
+  'Jeudi': {
     0: [
       {id: 1, name: 'Fruits et légumes',  portions: 1},
       {id: 9, name: 'Produits laitiers',  portions: 1},
@@ -140,7 +140,7 @@ let weekUptake = {
       {id: 1, name: 'Fruits et légumes',  portions: 1}
     ]
   },
-  friday: {
+  'Vendredi': {
     0: [
       {id: 1, name: 'Fruits et légumes',  portions: 1},
       {id: 9, name: 'Produits laitiers',  portions: 1},
@@ -151,7 +151,7 @@ let weekUptake = {
       {id: 1, name: 'Fruits et légumes',  portions: 1}
     ]
   },
-  saturday: {
+  'Samedi': {
     0: [
       {id: 1, name: 'Fruits et légumes',  portions: 1},
       {id: 9, name: 'Produits laitiers',  portions: 1},
@@ -165,7 +165,7 @@ let weekUptake = {
       {id: 1, name: 'Fruits et légumes',  portions: 1}
     ]
   },
-  sunday: {
+  'Dimanche': {
     0: [
       {id: 1, name: 'Fruits et légumes',  portions: 1},
       {id: 9, name: 'Produits laitiers',  portions: 1},
@@ -175,5 +175,184 @@ let weekUptake = {
       {id: 9, name: 'Produits laitiers',  portions: 1},
       {id: 1, name: 'Fruits et légumes',  portions: 1}
     ]
+  }
+}
+
+let saveMenus = {
+  'name': 'Menu de la semaine 42',
+  'weekUptake': {
+    'Lundi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ],
+      3: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 3}
+      ]
+    },
+    'Mardi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Mercredi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Jeudi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Vendredi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Samedi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      1: [
+        { id: 2, name: 'Viande rouge',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Dimanche': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    }
+  },
+  'name': 'Menu de la semaine 43',
+  'weekUptake': {
+    'Lundi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ],
+      3: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 3}
+      ]
+    },
+    'Mardi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Mercredi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Jeudi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Vendredi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Samedi': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      1: [
+        { id: 2, name: 'Viande rouge',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    },
+    'Dimanche': {
+      0: [
+        {id: 1, name: 'Fruits et légumes',  portions: 1},
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 5, name: 'Féculents et produits céréaliers',  portions: 1}
+      ],
+      2: [
+        {id: 9, name: 'Produits laitiers',  portions: 1},
+        {id: 1, name: 'Fruits et légumes',  portions: 1}
+      ]
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Pattern journalier</h2>
+        <h2>Pattern journalier (WIP)</h2>
         <form>
             <div v-for="el in pattern">
                 <div class="formElement">
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </form>
-        <h2>Catégories</h2>
+        <h2>Catégories (WIP)</h2>
         <form>
             <div v-for="el in reco" :key="el.id">
                 <div class="formElement">

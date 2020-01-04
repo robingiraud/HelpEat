@@ -6,8 +6,8 @@
           <img  src='/src/assets/logo_white.png' @click="display='displayHomePage'">
           <nav>
             <ul>
-              <li><i class="fas fa-check-circle"></i> Recommandations OMS</li>
-              <li><i class="fas fa-utensils"></i> Mes menus</li>
+              <li @click="toggleMenu('displayReco')"><i class="fas fa-check-circle"></i> Recommandations OMS</li>
+              <li @click="toggleMenu('displayHistory')"><i class="fas fa-utensils"></i> Mes menus</li>
             </ul>
           </nav>
         </div>
@@ -28,7 +28,9 @@
     <HomePage v-if="display === 'displayHomePage'" @clicked="toggleDisplay" />
     <FormMenu v-if="display === 'displayForm'"  @clicked="toggleDisplay" @results="getMenuData" />
     <SettingsPage v-if="display === 'displaySettings'" @clicked="toggleDisplay" />
-    <ResultBoard v-if="display == 'displayResult'" @clicked="toggleDisplay" :dataMenu="dataMenu" />
+    <ResultBoard v-if="display === 'displayResult'" @clicked="toggleDisplay" :dataMenu="dataMenu" />
+    <HistoryPage v-if="display === 'displayHistory'" />
+    <RecommandationsOMS v-if="display === 'displayReco'" />
   </div>
 </template>
 
@@ -37,13 +39,19 @@
     import FormMenu from "./components/Pages/FormMenu";
     import ResultBoard from "./components/Pages/ResultBoard";
     import SettingsPage from "./components/Pages/SettingsPage";
+    import HistoryPage from "./components/Pages/HistoryPage";
+    import RecommandationsOMS from "./components/Pages/RecommandationsOMS";
+
     export default {
         name: "App",
         components: {
+          RecommandationsOMS,
           SettingsPage,
           HomePage,
           FormMenu,
           ResultBoard,
+          HistoryPage,
+          ResultBoard
         },
         data() {
           return {
@@ -54,6 +62,9 @@
         },
         methods: {
           toggleDisplay(value) {
+            this.display = value
+          },
+          toggleMenu(value) {
             this.display = value
           },
           getMenuData(data) {
