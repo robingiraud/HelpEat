@@ -82,10 +82,18 @@
         flex-basis: calc(((0.2%) * 100) - 10px);
         height: auto;
         background-color: rgba(242, 242, 242, 0.7);
+
+        @media screen and (max-width: 480px) {
+            flex-basis: 100%;
+        }
     }
 
     [class*="item-"] {
         margin: 16px 5px;
+
+        @media screen and (max-width: 480px) {
+            margin: 10px 5px;
+        }
     }
 
     h1.item-1 {
@@ -93,6 +101,10 @@
         justify-content: center;
         align-items: center;
         text-transform: capitalize;
+
+        @media screen and (max-width: 480px) {
+            padding: 15px 0;
+        }
     }
 
     h4 {
