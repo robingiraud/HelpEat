@@ -22,8 +22,16 @@
     </header>
     <header id="headerMobile">
       <img  src='/src/assets/logo_white.png' @click="display='displayHomePage'">
-      <i class="fas fa-bars"></i>
+      <i class="fas fa-bars" @click="isActive = !isActive"></i>
     </header>
+     <nav v-bind:class="[isActive ? 'side-menu active': 'side-menu']">
+        <ul>
+          <li @click="toggleMenu('displayReco')"><i class="fas fa-check-circle"></i>Recommandations OMS</li>
+          <li @click="toggleMenu('displayHistory')"><i class="fas fa-utensils"></i>Mes menus</li>
+          <li @click="display='displaySettings'"><i class="fas fa-cog" name="Paramètres"></i>Paramètres</li>
+          <li><i class="fas fa-user"></i>Login</li>
+        </ul>
+      </nav>
     <!-- Content -->
     <HomePage v-if="display === 'displayHomePage'" @clicked="toggleDisplay" />
     <FormMenu v-if="display === 'displayForm'"  @clicked="toggleDisplay" @results="getMenuData" />
@@ -57,7 +65,8 @@
           return {
             display: 'displayHomePage',
             show: true,
-            dataMenu: {}
+            dataMenu: {},
+            isActive: false
           }
         },
         methods: {
@@ -79,6 +88,11 @@
   #app {
     margin: 0;
     padding: 0;
+
+    .side-menu {
+      display: none;
+    }
+    
     #headerMobile {
       display: none;
       margin: 0;
@@ -154,7 +168,41 @@
     #app {
       #headerMobile {
         display: flex !important;
+        position: relative;
+        z-index: 1;
       }
+      .side-menu {
+          background-color: rgb(206, 206, 206);
+          position: absolute;
+          top: -256px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          z-index: 0;
+          transition: top 0.7s ease-in-out;
+
+        i {
+          color: white;
+          font-size: 32px;
+          margin-right: 5vw;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+          ul {
+            list-style: none;
+
+            li {
+              margin: 20px 0;
+              color: white;
+            }
+          }
+        }
+
+        .active {
+          top: 100px !important;
+        }
       #headerDesktop {
         display: none !important;
       }
