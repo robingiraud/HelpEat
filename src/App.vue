@@ -88,6 +88,11 @@
   #app {
     margin: 0;
     padding: 0;
+
+    .side-menu {
+      display: none;
+    }
+    
     #headerMobile {
       display: none;
       margin: 0;
