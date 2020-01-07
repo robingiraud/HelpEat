@@ -43,7 +43,17 @@
                 this.results = happyMeals.weekMap;
             },
             save() {
-                window.print()
+                console.log('---Programme Paloma---')
+                let a = 5
+                let n = 0
+                let b = 1
+
+                for(let i = 0 ; i < 5 ; i++) {
+                    n = n + 1
+                    b = b * a
+                    console.log('b --> ' + b)
+                    console.log('n --> ' + n)
+                }
             }
         },
         mounted () {
@@ -60,7 +70,7 @@
 
         p {
             width: 80%;
-            margin: 0;
+            margin-bottom: 0;
             font-size: 18px;
         }
     }
