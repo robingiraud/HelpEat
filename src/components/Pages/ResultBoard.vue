@@ -1,9 +1,20 @@
 <template>
     <div flex-fluid flex-column>
         <div class="titleContainer">
-            <p><i class="far fa-check-square" style="color:green"></i> Notre chef vous propose...</p>
+            <p>Notre chef vous propose...</p>
         </div>
         <hr width="80%">
+        <aside>
+            <ul>
+                <li v-for="categorie in reco">
+                    <i v-if="totals[categorie.id] === undefined" class="fa fa-question"></i>
+                    <i v-else-if="totals[categorie.id].week > reco[categorie.id].min && totals[categorie.id].week < reco[categorie.id].max" class="far fa-smile"></i>
+                    <i v-else-if="totals[categorie.id].week === reco[categorie.id].min || totals[categorie.id].week === reco[categorie.id].max" class="far fa-meh"></i>
+                    <i v-else-if="totals[categorie.id].week < reco[categorie.id].min || totals[categorie.id].week > reco[categorie.id].max" class="far fa-frown"></i>
+                    <p>{{categorie.name}}</p>
+                </li>
+            </ul>
+        </aside>
         <section class='container'>
             <div v-for="day in days" v-bind:key="day" class="day flex-fluid">
                 <h1 class="item-1">{{day}}</h1>
@@ -27,33 +38,29 @@
     export default {
         name: 'ResultBoard',
         props: [
-            'dataMenu'
-        ],
-        data() {
+            'dataMenu', 'wantProvide'
+        ], data() {
             return {
                 meal: ['Petit Déjeuner', 'Déjeuner', 'Gouter', 'Dîner'],
                 days: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
-                results: {}
+                totals: {},
+                results: {},
+                reco: recommendations
             }
         },
         methods: {
             getData() {
                 let happyMeals = new HappyMeals(recommendations, mealsPattern, this.dataMenu);
-                happyMeals.provideMeals();
-                this.results = happyMeals.weekMap;
+                if(this.wantProvide) {
+                    happyMeals.provideMeals();
+                    this.results = happyMeals.weekMap;
+                } else {
+                    this.results = happyMeals.weekMap;
+                }
+                this.totals = happyMeals.totalsWeek;
             },
             save() {
-                console.log('---Programme Paloma---')
-                let a = 5
-                let n = 0
-                let b = 1
-
-                for(let i = 0 ; i < 5 ; i++) {
-                    n = n + 1
-                    b = b * a
-                    console.log('b --> ' + b)
-                    console.log('n --> ' + n)
-                }
+                window.print()
             }
         },
         mounted () {
@@ -142,6 +149,49 @@
         box-shadow: 2px 6px 22px -1px rgba(87,87,87,1);
         &:hover {
             cursor: pointer;
+        }
+    }
+    aside {
+        display: flex;
+        justify-content: center;
+        ul {
+            width: 80%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            li {
+                width: 10%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &:not(last-child) {
+                    margin-bottom: 1rem;
+                }
+                .far {
+                    font-size: 24px;
+                    margin-bottom: .4rem;
+                    &.fa-smile {
+                        color: green;
+                    }
+                    &.fa-meh {
+                        color: orange;
+                    }
+                    &.fa-frown {
+                        color: red;
+                    }
+                }
+                .fa {
+                    font-size: 24px;
+                    margin-bottom: .4rem;
+                }
+                p {
+                    padding: 0;
+                    margin: 0;
+                    text-align: center;
+                    font-size: 12px;
+                }
+            }
         }
     }
 </style>

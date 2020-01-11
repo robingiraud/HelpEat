@@ -19,72 +19,82 @@ let mealsPattern = [
 
 let recommendations = [
   {
-    id: 1,
+    id: 0,
     name: 'Fruits et légumes',
     min: 35,
+    max: 50,
     period: 'week',
     cumulative: true
   },
   {
-    id: 2,
+    id: 1,
     name: 'Viande rouge',
-    max: 2,
+    min: 0,
+    max: 5,
     period: 'week',
     cumulative: false
   },
   {
-    id: 3,
+    id: 2,
     name: 'Charcuterie',
+    min: 0,
     max: 1,
     period: 'week',
     cumulative: false
   },
   {
-    id: 4,
+    id: 3,
     name: 'Viande blanche',
+    min: 0,
     max: 7,
     period: 'week',
     cumulative: false
   },
   {
-    id: 5,
+    id: 4,
     name: 'Féculents et produits céréaliers',
+    min: 0,
     max: 14,
     period: 'week',
     cumulative: true
   },
   {
-    id: 6,
+    id: 5,
     name: 'Poisson gras',
+    min: 0,
+    max: 1,
+    period: 'week',
+    cumulative: false
+  },
+  {
+    id: 6,
+    name: 'Poisson maigre',
+    min: 0,
     max: 1,
     period: 'week',
     cumulative: false
   },
   {
     id: 7,
-    name: 'Poisson maigre',
-    max: 1,
-    period: 'week',
-    cumulative: false
-  },
-  {
-    id: 8,
     name: 'Œuf',
+    min: 0,
     max: 7,
     period: 'week',
     cumulative: false
   },
   {
-    id: 9,
+    id: 8,
     name: 'Produits laitiers',
+    min: 0,
     max: 21,
     period: 'week',
     cumulative: true
   },
   {
-    id: 10,
+    id: 9,
     name: 'Légumineuses',
     min: 2,
+    max: 50,
     period: 'week',
     cumulative: true
   }

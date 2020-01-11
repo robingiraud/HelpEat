@@ -7,6 +7,16 @@
             <hr width="80%">
             <div class="submitContainer">
                 <button @click="displayResult">Valider</button>
+                <div class="checkboxContainer">
+                    <input v-model="wantProvide" type="checkbox" name="cb" id="cb">
+                    <label for="cb" id="checkbox">
+                        <svg viewBox="0 0 100 100">
+                            <path class="box" d="M82,89H18c-3.87,0-7-3.13-7-7V18c0-3.87,3.13-7,7-7h64c3.87,0,7,3.13,7,7v64C89,85.87,85.87,89,82,89z"/>
+                            <polyline class="check" points="25.5,53.5 39.5,67.5 72.5,34.5 "/>
+                        </svg>
+                        <span>Activer la génération de repas</span>
+                    </label>
+                </div>
             </div>
             <section class="tableMenus">
                 <div class="accordion" @click="toggleAccordeon('Lundi')"
@@ -745,7 +755,8 @@
                     'Vendredi': {0: [], 1: [], 2: [], 3: []},
                     'Samedi': {0: [], 1: [], 2: [], 3: []},
                     'Dimanche': {0: [], 1: [], 2: [], 3: []}
-                }
+                },
+                wantProvide: false
             }
         },
         methods: {
@@ -781,6 +792,7 @@
             displayResult ()  {
                 this.$emit('clicked', 'displayResult');
                 this.$emit('results', this.data);
+                this.$emit('wantProvide', this.wantProvide);
             }
         }
     };
@@ -808,8 +820,9 @@
 
         .submitContainer {
             width: 100%;
-            text-align: center;
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             button {
                 border-radius: 10px;
                 background-color: #C83E3E;
@@ -817,6 +830,59 @@
                 padding: .5em 1em;
                 font-size: 16px;
                 cursor: pointer;
+            }
+            
+            // Custom checkbox avec SVG
+            .checkboxContainer
+            {
+                margin: .3rem 0 .3rem  0;
+            }
+            input[type=checkbox] {
+                display: none;
+                pointer-events: none;
+
+                & + label {
+                    cursor: pointer;
+                    font-size: .8em;
+                    display: grid;
+                    grid-template-columns: auto 3fr;
+
+                    svg {
+                        width: 2em;
+                        stroke: #C83E3E;
+                        stroke-width: 5;
+                        fill: white;
+
+
+                        .box {
+                            stroke-dasharray: 320;
+                            stroke-dashoffset: 0;
+                            fill: white;
+                            transition: stroke-dashoffset .3s linear;
+                        }
+                        .check {
+                            stroke-dasharray: 70;
+                            stroke-dashoffset: 70;
+                            fill: none;
+                            transition: stroke-dashoffset .3s linear;
+                        }
+                    }
+
+                    span {
+                        padding-top: .5em;
+                        margin-left: .3em;
+                    }
+                }
+
+                &:checked + label {
+                    .box {
+                        stroke-dashoffset: 320;
+
+                    }
+                    .check {
+                        stroke-dashoffset: 0;
+                    }
+                }
             }
         }
 

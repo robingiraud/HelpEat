@@ -34,9 +34,9 @@
       </nav>
     <!-- Content -->
     <HomePage v-if="display === 'displayHomePage'" @clicked="toggleDisplay" />
-    <FormMenu v-if="display === 'displayForm'"  @clicked="toggleDisplay" @results="getMenuData" />
+    <FormMenu v-if="display === 'displayForm'"  @clicked="toggleDisplay" @results="getMenuData" @wantProvide="getWantProvide" />
     <SettingsPage v-if="display === 'displaySettings'" @clicked="toggleDisplay" />
-    <ResultBoard v-if="display === 'displayResult'" @clicked="toggleDisplay" :dataMenu="dataMenu" />
+    <ResultBoard v-if="display === 'displayResult'" @clicked="toggleDisplay" :dataMenu="dataMenu" :wantProvide="wantProvide" />
     <HistoryPage v-if="display === 'displayHistory'" />
     <RecommandationsOMS v-if="display === 'displayReco'" />
   </div>
@@ -66,6 +66,7 @@
             display: 'displayHomePage',
             show: true,
             dataMenu: {},
+            wantProvide: false,
             isActive: false
           }
         },
@@ -77,7 +78,11 @@
             this.display = value
           },
           getMenuData(data) {
-            this.dataMenu = data
+              console.log('getmenudata');
+            this.dataMenu = data;
+          },
+          getWantProvide(data) {
+            this.wantProvide = data
           }
         }
     };
@@ -172,7 +177,8 @@
         z-index: 1;
       }
       .side-menu {
-          background-color: rgb(206, 206, 206);
+          background-color: #C83E3E;
+          color: white;
           position: absolute;
           top: -256px;
           width: 100%;
