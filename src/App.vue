@@ -78,7 +78,6 @@
             this.display = value
           },
           getMenuData(data) {
-              console.log('getmenudata');
             this.dataMenu = data;
           },
           getWantProvide(data) {
@@ -94,6 +93,9 @@
     margin: 0;
     padding: 0;
 
+      p, label, h1, h2, h3, li {
+          user-select: none;
+      }
     .side-menu {
       display: none;
     }

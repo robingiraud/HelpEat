@@ -12,7 +12,6 @@ class HappyMeals {
     this.cumulativeState = {}
     this.weekMap = this.weekMap()
   }
-
   /* provideMeals : Methode principale retournant toutes les proposition de menus de la semaine */
   provideMeals() {
     // on commence par boucler sur chaque jour de weekMap
@@ -143,12 +142,12 @@ class HappyMeals {
       if(this.totalsWeek[meal[i].id][nameDay] === undefined){
         this.totalsWeek[meal[i].id][nameDay] = 0
       }
-      this.totalsWeek[meal[i].id][nameDay] = this.totalsWeek[meal[i].id][nameDay] + meal[i].portions
+      this.totalsWeek[meal[i].id][nameDay] = this.totalsWeek[meal[i].id][nameDay] + parseInt(meal[i].portions)
       // on crée une entrée spécifique pour le total de la semaine
       if(this.totalsWeek[meal[i].id]['week'] === undefined){
         this.totalsWeek[meal[i].id]['week'] = 0
       }
-      this.totalsWeek[meal[i].id]['week'] = this.totalsWeek[meal[i].id]['week'] + meal[i].portions
+      this.totalsWeek[meal[i].id]['week'] = this.totalsWeek[meal[i].id]['week'] + parseInt(meal[i].portions)
       // on enregistre les ingrédients non cumulables dans cumulativeState
       if((this.cumulativeState[nameDay] === undefined) && !this.reco.find(alim => alim.id == meal[i].id).cumulative){
         // console.warn(meal[i].name, this.reco.find(alim => alim.id == meal[i].id).cumulative)
@@ -175,7 +174,7 @@ class HappyMeals {
   /* weekMap, créé une "carte" de la semaine et y place les menus déjà consomés */
   weekMap() {
     let weekMap = {}
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i <= 6; i++) {
       let nameDay = this.nameDays[i]
       weekMap[nameDay] = {}
       if(this.uptake[nameDay] !== undefined){

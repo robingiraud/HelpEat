@@ -7,10 +7,12 @@
         <aside>
             <ul>
                 <li v-for="categorie in reco">
-                    <i v-if="totals[categorie.id] === undefined" class="fa fa-question"></i>
-                    <i v-else-if="totals[categorie.id].week > reco[categorie.id].min && totals[categorie.id].week < reco[categorie.id].max" class="far fa-smile"></i>
-                    <i v-else-if="totals[categorie.id].week === reco[categorie.id].min || totals[categorie.id].week === reco[categorie.id].max" class="far fa-meh"></i>
-                    <i v-else-if="totals[categorie.id].week < reco[categorie.id].min || totals[categorie.id].week > reco[categorie.id].max" class="far fa-frown"></i>
+                    <i v-if="totals[categorie.id] === undefined" class="fas fa-ban"></i>
+                    <i v-else-if="totals[categorie.id].week > reco[categorie.id].min && totals[categorie.id].week < reco[categorie.id].max" class="fas fa-battery-half"></i>
+                    <i v-else-if="totals[categorie.id].week == reco[categorie.id].min" class="fas fa-battery-quarter"></i>
+                    <i v-else-if="totals[categorie.id].week == reco[categorie.id].max" class="fas fa-battery-three-quarters"></i>
+                    <i v-else-if="totals[categorie.id].week < reco[categorie.id].min" class="fas fa-battery-empty"></i>
+                    <i v-else-if="totals[categorie.id].week > reco[categorie.id].max" class="fas fa-battery-full"></i>
                     <p>{{categorie.name}}</p>
                 </li>
             </ul>
@@ -168,22 +170,24 @@
                 &:not(last-child) {
                     margin-bottom: 1rem;
                 }
-                .far {
+                .fas {
                     font-size: 24px;
                     margin-bottom: .4rem;
-                    &.fa-smile {
+                    &.fa-battery-half {
                         color: green;
                     }
-                    &.fa-meh {
+                    &.fa-battery-quarter {
                         color: orange;
                     }
-                    &.fa-frown {
+                    &.fa-battery-three-quarters {
+                        color: orange;
+                    }
+                    &.fa-battery-full {
                         color: red;
                     }
-                }
-                .fa {
-                    font-size: 24px;
-                    margin-bottom: .4rem;
+                    &.fa-battery-empty {
+                        color: red;
+                    }
                 }
                 p {
                     padding: 0;
