@@ -41,7 +41,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Lundi'][0][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Lundi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Lundi', 0, index)"></i>
                                     </li>
@@ -64,7 +64,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Lundi'][1][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Lundi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Lundi', 1, index)"></i>
                                     </li>
@@ -87,7 +87,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Lundi'][2][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Lundi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Lundi', 2, index)"></i>
                                     </li>
@@ -110,7 +110,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Lundi'][3][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Lundi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Lundi', 3, index)"></i>
                                     </li>
@@ -141,7 +141,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mardi'][0][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mardi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mardi', 0, index)"></i>
                                     </li>
@@ -164,7 +164,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mardi'][1][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mardi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mardi', 1, index)"></i>
                                     </li>
@@ -187,7 +187,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mardi'][2][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mardi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mardi', 2, index)"></i>
                                     </li>
@@ -210,7 +210,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mardi'][3][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mardi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mardi', 3, index)"></i>
                                     </li>
@@ -241,7 +241,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mercredi'][0][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mercredi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mercredi', 0, index)"></i>
                                     </li>
@@ -264,7 +264,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mercredi'][1][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mercredi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mercredi', 1, index)"></i>
                                     </li>
@@ -287,7 +287,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mercredi'][2][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mercredi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mercredi', 2, index)"></i>
                                     </li>
@@ -310,7 +310,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Mercredi'][3][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Mercredi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Mercredi', 3, index)"></i>
                                     </li>
@@ -341,7 +341,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Jeudi'][0][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Jeudi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Jeudi', 0, index)"></i>
                                     </li>
@@ -365,7 +365,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Jeudi'][1][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Jeudi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Jeudi', 1, index)"></i>
                                     </li>
@@ -389,7 +389,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Jeudi'][2][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Jeudi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Jeudi', 2, index)"></i>
                                     </li>
@@ -413,7 +413,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Jeudi'][3][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Jeudi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Jeudi', 3, index)"></i>
                                     </li>
@@ -444,7 +444,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Vendredi'][0][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Vendredi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Vendredi', 0, index)"></i>
                                     </li>
@@ -467,7 +467,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Vendredi'][1][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Vendredi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Vendredi', 1, index)"></i>
                                     </li>
@@ -490,7 +490,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Vendredi'][2][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Vendredi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Vendredi', 2, index)"></i>
                                     </li>
@@ -513,7 +513,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Vendredi'][3][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Vendredi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Vendredi', 3, index)"></i>
                                     </li>
@@ -545,7 +545,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Samedi'][0][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Samedi'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Samedi', 0, index)"></i>
                                     </li>
@@ -569,7 +569,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Samedi'][1][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Samedi'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Samedi', 1, index)"></i>
                                     </li>
@@ -593,7 +593,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Samedi'][2][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Samedi'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Samedi', 2, index)"></i>
                                     </li>
@@ -617,7 +617,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Samedi'][3][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Samedi'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Samedi', 3, index)"></i>
                                     </li>
@@ -648,7 +648,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Dimanche'][0][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Dimanche'][0][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Dimanche', 0, index)"></i>
                                     </li>
@@ -671,7 +671,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Dimanche'][1][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Dimanche'][1][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Dimanche', 1, index)"></i>
                                     </li>
@@ -694,7 +694,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Dimanche'][2][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Dimanche'][2][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Dimanche', 2, index)"></i>
                                     </li>
@@ -717,7 +717,7 @@
                                         <div class="listLibelle">
                                             <span>{{ element.name }}</span>
                                         </div>
-                                        <input type="number" min="0" v-model="data['Dimanche'][3][index].portions">
+                                        <input type="number" min="0" max="10" v-model="data['Dimanche'][3][index].portions">
                                         <i class='fas fa-times-circle' aria-hidden="true"
                                            @click="deleteData('Dimanche', 3, index)"></i>
                                     </li>
